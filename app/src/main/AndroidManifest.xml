@@ -20,7 +20,7 @@
              </intent-filter>
             <meta-data
                 android:name="android.app.default_searchable"
-                android:value=".activity.SearchActivity" />
+                android:value="br.edu.ifspsaocarlos.agendafirebase.activity.SearchActivity" />
         </activity>
 
         <activity

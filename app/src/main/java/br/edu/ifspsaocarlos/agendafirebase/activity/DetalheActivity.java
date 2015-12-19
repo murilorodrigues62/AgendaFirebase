@@ -129,7 +129,8 @@ public class DetalheActivity extends AppCompatActivity {
             c.setFone(fone);
             c.setEmail(email);
 
-           myFirebaseRef.child(FirebaseID).setValue(c);
+            // apaga e busca todos os campos de novo. Existe outro metodo para atualizar somente um campo.
+            myFirebaseRef.child(FirebaseID).setValue(c);
 
             Toast.makeText(this, "Alterado com sucesso", Toast.LENGTH_SHORT).show();
         }

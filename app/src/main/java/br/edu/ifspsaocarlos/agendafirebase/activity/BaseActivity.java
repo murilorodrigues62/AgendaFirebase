@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.Query;
 
 import br.edu.ifspsaocarlos.agendafirebase.R;
 import br.edu.ifspsaocarlos.agendafirebase.adapter.ContatoFirebaseAdapter;
@@ -77,7 +78,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
-        // TODO Auto-generated method stub
+
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater m = getMenuInflater();
         m.inflate(R.menu.menu_context, menu);
@@ -110,7 +111,15 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void buildSearchListView(String query) {
-        // EXERCÍCIO PARA ENTREGAR: IMPLEMENTAR
+
+        // Faz a busca pelo nome, no banco de dados Firebase
+        Query queryRef = myFirebaseRef.orderByChild("nome")
+                                      .startAt(query)
+                                      .endAt(query + "\uf8ff");
+
+        mAdapter = new ContatoFirebaseAdapter(this, queryRef);
+
+        list.setAdapter(mAdapter);
 
     }
 
